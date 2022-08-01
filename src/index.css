@@ -38,7 +38,7 @@ code {
 	} */
 
 	.griden {
-		@apply grid grid-cols-5 gap-x-8 gap-y-4 items-start h-full;
+		@apply grid grid-cols-5 items-start h-full;
 	}
 	.col {
 		@apply h-full;
