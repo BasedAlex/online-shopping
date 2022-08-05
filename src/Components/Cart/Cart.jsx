@@ -126,7 +126,7 @@ function Cart() {
 						<div className='w-48 max-w-full'>
 							<div className='flex justify-between text-xl'>
 								<span>Subtotal</span>
-								<span className='font-bold'> ${cart.cartTotalAmount} </span>
+								<span className='font-bold'>${cart.cartTotalAmount}</span>
 							</div>
 							<p className='text-sm font-extralight my-2 mt-0	'>
 								Prices are already adjusted

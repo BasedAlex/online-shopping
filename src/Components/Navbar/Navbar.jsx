@@ -11,13 +11,13 @@ function Navbar() {
 	const favItems = 1
 
 	const navigation = [
-		{ title: 'For men', path: 'javascript:void(0)' },
-		{ title: 'For women', path: 'javascript:void(0)' },
-		{ title: 'For children', path: 'javascript:void(0)' },
-		{ title: 'Unisex', path: 'javascript:void(0)' },
-		{ title: 'Watches', path: 'javascript:void(0)' },
-		{ title: 'Jewellery', path: 'javascript:void(0)' },
-		{ title: 'Brands', path: 'javascript:void(0)' },
+		{ title: 'For men', path: 'male' },
+		{ title: 'For women', path: 'female' },
+		{ title: 'For children', path: 'children' },
+		{ title: 'Unisex', path: 'unisex' },
+		{ title: 'Watches', path: 'watches' },
+		{ title: 'Jewellery', path: 'jewellery' },
+		{ title: 'Brands', path: 'brands' },
 	]
 
 	return (
@@ -25,7 +25,7 @@ function Navbar() {
 			<div className='items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8'>
 				<div className='flex items-center justify-between py-3 md:py-5 md:block'>
 					<Link to='/'>
-						<a href='javascript:void(0)'>
+						<a href='%'>
 							<img src={logo} width={120} height={50} alt='logo' />
 						</a>
 					</Link>
@@ -133,7 +133,7 @@ function Navbar() {
 						</div>
 					</Link>
 					<a
-						href='javascript:void(0)'
+						href='%'
 						className='py-3 px-4 text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow'
 					>
 						Log-in
