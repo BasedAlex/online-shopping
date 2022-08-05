@@ -10,6 +10,10 @@ module.exports = {
 			gridRowStart: {
 				'2/3': '2 / span 3',
 			},
+			gridTemplateColumns: {
+				// For cart box
+				cart: '3fr 1fr 1fr 1fr',
+			},
 		},
 	},
 	plugins: [],

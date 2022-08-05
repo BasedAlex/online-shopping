@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import '../../input.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { getProducts } from '../../features/Products/productsSlice'
+import {
+	addToBasket,
+	addToCart,
+	getProducts,
+} from '../../features/Products/productsSlice'
 
 const myObject = {
 	results: [
@@ -12304,12 +12308,17 @@ function Hero() {
 	const dispatch = useDispatch()
 	const products = useSelector(state => state.product.products)
 
+	const handleAddToCart = product => {
+		dispatch(addToCart(product))
+	}
+
 	let properProducts = myObject.results
 	properProducts = properProducts.map(item => {
 		const value = item.price.formattedValue
 		const itemName = item.name
 		let image = item.images[0].url
-		return [value, itemName, image]
+		const fullValue = item.price.value
+		return [value, itemName, image, fullValue]
 	})
 
 	return (
@@ -12340,9 +12349,9 @@ function Hero() {
 									<p className='font-normal text-gray-700 mb-3 dark:text-gray-400'>
 										Price: {item[0]}
 									</p>
-									<a
-										href='%'
+									<button
 										className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+										onClick={() => handleAddToCart(item)}
 									>
 										Add to cart
 										<svg
@@ -12357,7 +12366,7 @@ function Hero() {
 												clip-rule='evenodd'
 											></path>
 										</svg>
-									</a>
+									</button>
 								</div>
 							</div>
 						</div>
