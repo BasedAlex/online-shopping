@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../../assets/images/shopping-logo.png'
+import { useSelector } from 'react-redux'
 
 function Navbar() {
 	const [state, setState] = useState(false)
 
-	const favItems = 1
+	const { cartTotalQuantity } = useSelector(state => state.product)
 
-	const cartItems = 2
+	const favItems = 1
 
 	const navigation = [
 		{ title: 'For men', path: 'javascript:void(0)' },
@@ -122,9 +123,9 @@ function Navbar() {
 								</svg>
 								<p>Cart</p>
 							</div>
-							{cartItems ? (
+							{cartTotalQuantity ? (
 								<span className='bg-red-600 text-white rounded-lg	px-1 py-0 self-start text-sm		'>
-									{cartItems}
+									{cartTotalQuantity}
 								</span>
 							) : (
 								''

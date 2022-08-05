@@ -6,6 +6,9 @@ import reportWebVitals from './reportWebVitals'
 
 import { store } from './store/store'
 import { Provider } from 'react-redux'
+import { getTotals } from './features/Products/productsSlice'
+
+store.dispatch(getTotals())
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
