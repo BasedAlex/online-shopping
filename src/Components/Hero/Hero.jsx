@@ -21,14 +21,15 @@ function Hero() {
 		const itemName = item.name
 		let image = item.images[0].url
 		const fullValue = item.price.value
-		return [value, itemName, image, fullValue]
+		const code = item.code
+		return [value, itemName, image, fullValue, code]
 	})
 
 	return (
 		<>
 			<div className='griden '>
-				{properProducts?.map((item, idx) => (
-					<div className='mt-5  mx-10'>
+				{properProducts?.map(item => (
+					<div key={item[4]} className='mt-5  mx-10'>
 						<div className='max-w-2xl mx-auto'>
 							<div className='bg-white shadow-md border border-gray-200 rounded-lg max-w-sm dark:bg-gray-800 dark:border-gray-700'>
 								<a href='%'>
@@ -55,9 +56,9 @@ function Hero() {
 											xmlns='http://www.w3.org/2000/svg'
 										>
 											<path
-												fill-rule='evenodd'
+												fillRule='evenodd'
 												d='M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z'
-												clip-rule='evenodd'
+												clipRule='evenodd'
 											></path>
 										</svg>
 									</button>

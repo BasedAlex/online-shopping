@@ -1,9 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-//https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list
-//https://jsonplaceholder.typicode.com/posts
-
 const initialState = {
 	cartItems: localStorage.getItem('cartItems')
 		? JSON.parse(localStorage.getItem('cartItems'))
@@ -26,6 +23,7 @@ export const getProducts = createAsyncThunk(
 			}
 		)
 		dispatch(setProducts(res.data))
+		console.log(rejectWithValue.value)
 	}
 )
 
@@ -70,11 +68,11 @@ export const productsSlice = createSlice({
 			}
 			localStorage.setItem('cartItems', JSON.stringify([[...state.cartItems]]))
 		},
-		clearCart: (state, action) => {
+		clearCart: state => {
 			state.cartItems = []
 			localStorage.setItem('cartItems', JSON.stringify([[...state.cartItems]]))
 		},
-		getTotals(state, action) {
+		getTotals(state) {
 			let { total, quantity } = state.cartItems.reduce(
 				(cartTotal, cartItem) => {
 					let { 3: price, cartQuantity } = cartItem

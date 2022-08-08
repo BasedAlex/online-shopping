@@ -30,7 +30,7 @@ function Cart() {
 		dispatch(addToCart(cartItem))
 	}
 
-	const handleClearCart = cartItem => {
+	const handleClearCart = () => {
 		dispatch(clearCart())
 	}
 
