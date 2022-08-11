@@ -6,7 +6,6 @@ import {
 	clearCart,
 	decreaseCart,
 	getTotals,
-	// getTotals,
 	removeFromCart,
 } from '../../features/Products/productsSlice'
 
@@ -17,11 +16,7 @@ function Cart() {
 
 	useEffect(() => {
 		dispatch(getTotals())
-	}, [dispatch])
-
-	// const handleGetTotals = cartItem => {
-	// 	dispatch(getTotals(cartItem))
-	// }
+	}, [cart, dispatch])
 
 	const handleRemoveFromCart = cartItem => {
 		dispatch(removeFromCart(cartItem))
@@ -116,7 +111,7 @@ function Cart() {
 									</button>
 								</div>
 								<div className='font-semibold'>
-									$ {cartItem[3] * cartItem.cartQuantity}
+									$ {(cartItem[3] * cartItem.cartQuantity).toFixed(2)}
 								</div>
 							</div>
 						))}
@@ -131,7 +126,9 @@ function Cart() {
 						<div className='w-48 max-w-full'>
 							<div className='flex justify-between text-xl'>
 								<span>Subtotal</span>
-								<span className='font-bold'>${cart.cartTotalAmount}</span>
+								<span className='font-bold'>
+									${cart.cartTotalAmount.toFixed(2)}
+								</span>
 							</div>
 							<p className='text-sm font-extralight my-2 mt-0	'>
 								Prices are already adjusted
