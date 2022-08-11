@@ -9,21 +9,19 @@ const initialState = {
 	cartTotalAmount: 0,
 }
 
+// https://fakestoreapi.com/products
+
 export const getProducts = createAsyncThunk(
 	'products/getProducts',
 	async (_, { rejectWithValue, dispatch }) => {
-		const res = await axios.get(
-			'https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list',
-			{
-				headers: {
-					'X-RapidAPI-Key':
-						'517c65ce36msh7ca8687d9a72ef7p163f38jsn028e1ad2364b',
-					'X-RapidAPI-Host': 'apidojo-hm-hennes-mauritz-v1.p.rapidapi.com',
-				},
-			}
-		)
-		dispatch(setProducts(res.data))
-		console.log(rejectWithValue.value)
+		try {
+			const res = await axios.get('https://fakestoreapi.com/products')
+			dispatch(setProducts(res.data))
+			console.log(res.data)
+			console.log(rejectWithValue)
+		} catch (e) {
+			return rejectWithValue("Can't load the page")
+		}
 	}
 )
 
