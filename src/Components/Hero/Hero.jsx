@@ -15,15 +15,17 @@ function Hero() {
 		dispatch(getProducts())
 	}, [dispatch])
 
-	let properProducts = products.results
+	let properProducts = products
 	properProducts = properProducts?.map(item => {
-		const value = item.price.formattedValue
-		const itemName = item.name
-		let image = item.images[0].url
-		const fullValue = item.price.value
-		const code = item.code
+		const value = item.price
+		const itemName = item.title
+		let image = item.image
+		const fullValue = item.price
+		const code = item.id
 		return [value, itemName, image, fullValue, code]
 	})
+
+	console.log(properProducts)
 
 	return (
 		<>
