@@ -6,6 +6,7 @@ import {
 	clearCart,
 	decreaseCart,
 	getTotals,
+	// getTotals,
 	removeFromCart,
 } from '../../features/Products/productsSlice'
 
@@ -16,7 +17,11 @@ function Cart() {
 
 	useEffect(() => {
 		dispatch(getTotals())
-	}, [cart, dispatch])
+	}, [dispatch])
+
+	// const handleGetTotals = cartItem => {
+	// 	dispatch(getTotals(cartItem))
+	// }
 
 	const handleRemoveFromCart = cartItem => {
 		dispatch(removeFromCart(cartItem))
@@ -46,7 +51,7 @@ function Cart() {
 								Start Shopping
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
-									className='h-6 w-6 mt-1'
+									className='h-6 w-6 mt-2'
 									fill='none'
 									viewBox='0 0 24 24'
 									stroke='currentColor'

@@ -12,11 +12,11 @@ function Hero() {
 	}
 
 	useEffect(() => {
-		getProducts()
-	}, [])
+		dispatch(getProducts())
+	}, [dispatch])
 
 	let properProducts = products.results
-	properProducts = properProducts.map(item => {
+	properProducts = properProducts?.map(item => {
 		const value = item.price.formattedValue
 		const itemName = item.name
 		let image = item.images[0].url
