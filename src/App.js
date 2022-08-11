@@ -7,7 +7,7 @@ import Navbar from './Components/Navbar/Navbar'
 
 function App() {
 	return (
-		<div className='max-w-screen-lg	'>
+		<div>
 			<BrowserRouter>
 				<Navbar />
 

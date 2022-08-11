@@ -17,8 +17,6 @@ export const getProducts = createAsyncThunk(
 		try {
 			const res = await axios.get('https://fakestoreapi.com/products')
 			dispatch(setProducts(res.data))
-			console.log(res.data)
-			console.log(rejectWithValue)
 		} catch (e) {
 			return rejectWithValue("Can't load the page")
 		}
@@ -48,27 +46,35 @@ export const productsSlice = createSlice({
 				const tempProduct = { ...action.payload, cartQuantity: 1 }
 				state.cartItems.push(tempProduct)
 			}
-			localStorage.setItem('cartItems', JSON.stringify([[...state.cartItems]]))
+			localStorage.setItem('cartItems', JSON.stringify([...state.cartItems]))
 		},
 		removeFromCart: (state, action) => {
 			const nextCartItems = state.cartItems.filter(
 				cartItem => cartItem[1] !== action.payload[1]
 			)
 			state.cartItems = nextCartItems
-			localStorage.setItem('cartItems', JSON.stringify([[...state.cartItems]]))
+			localStorage.setItem('cartItems', JSON.stringify([...nextCartItems]))
 		},
 		decreaseCart: (state, action) => {
 			const itemIndex = state.cartItems.findIndex(
 				item => item[1] === action.payload[1]
 			)
+			state.cartTotalQuantity--
 			if (state.cartItems[itemIndex].cartQuantity > 1) {
 				state.cartItems[itemIndex].cartQuantity -= 1
+				localStorage.setItem('cartItems', JSON.stringify([...state.cartItems]))
+			} else {
+				const nextCartItems = state.cartItems.filter(
+					cartItem => cartItem[1] !== action.payload[1]
+				)
+				state.cartItems = nextCartItems
+				localStorage.setItem('cartItems', JSON.stringify(nextCartItems))
 			}
-			localStorage.setItem('cartItems', JSON.stringify([[...state.cartItems]]))
 		},
 		clearCart: state => {
 			state.cartItems = []
-			localStorage.setItem('cartItems', JSON.stringify([[...state.cartItems]]))
+			state.cartTotalQuantity = 0
+			localStorage.removeItem('cartItems')
 		},
 		getTotals(state) {
 			let { total, quantity } = state.cartItems.reduce(
