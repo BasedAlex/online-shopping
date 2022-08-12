@@ -17,6 +17,7 @@ export const getProducts = createAsyncThunk(
 		try {
 			const res = await axios.get('https://fakestoreapi.com/products')
 			dispatch(setProducts(res.data))
+			console.log(res.data)
 		} catch (e) {
 			return rejectWithValue("Can't load the page")
 		}
@@ -37,7 +38,7 @@ export const productsSlice = createSlice({
 		},
 		addToCart: (state, action) => {
 			const itemIndex = state.cartItems.findIndex(
-				item => item[1] === action.payload[1]
+				item => item.id === action.payload.id
 			)
 			state.cartTotalQuantity++
 			if (itemIndex >= 0) {
@@ -79,7 +80,7 @@ export const productsSlice = createSlice({
 		getTotals(state) {
 			let { total, quantity } = state.cartItems.reduce(
 				(cartTotal, cartItem) => {
-					let { 3: price, cartQuantity } = cartItem
+					let { price, cartQuantity } = cartItem
 					const itemTotal = price * cartQuantity
 					cartTotal.total += itemTotal
 					cartTotal.quantity += cartQuantity

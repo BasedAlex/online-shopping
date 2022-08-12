@@ -10,19 +10,19 @@ function Navbar() {
 
 	const favItems = 1
 
-	const navigation = [
-		{ title: 'For men', path: 'male' },
-		{ title: 'For women', path: 'female' },
-		{ title: 'For children', path: 'children' },
-		{ title: 'Unisex', path: 'unisex' },
-		{ title: 'Watches', path: 'watches' },
-		{ title: 'Jewellery', path: 'jewellery' },
-		{ title: 'Brands', path: 'brands' },
-	]
+	// const navigation = [
+	// 	{ title: 'For men', path: 'male' },
+	// 	{ title: 'For women', path: 'female' },
+	// 	{ title: 'For children', path: 'children' },
+	// 	{ title: 'Unisex', path: 'unisex' },
+	// 	{ title: 'Watches', path: 'watches' },
+	// 	{ title: 'Jewellery', path: 'jewellery' },
+	// 	{ title: 'Brands', path: 'brands' },
+	// ]
 
 	return (
 		<nav className='bg-white w-full border-b md:border-0 md:static'>
-			<div className='items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8'>
+			<div className='items-center justify-between px-4 max-w-screen-xl mx-auto md:flex md:px-8'>
 				<div className='flex items-center justify-between py-3 md:py-5 md:block'>
 					<Link to='/'>
 						<a href='%'>
@@ -66,12 +66,12 @@ function Navbar() {
 						</button>
 					</div>
 				</div>
-				<div
+				{/* <div
 					className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
 						state ? 'block' : 'hidden'
 					}`}
 				>
-					<ul className='justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0'>
+					<ul className=' justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0'>
 						{navigation.map((item, idx) => {
 							return (
 								<li key={idx} className='text-gray-600 hover:text-indigo-600'>
@@ -80,10 +80,10 @@ function Navbar() {
 							)
 						})}
 					</ul>
-				</div>
+				</div> */}
 				<div className='flex items-center'>
 					<div className='align-center '>
-						<div className=' flex flex-row	grow-0 shrink pt-1 pr-10pt-1 pr-10 fill-gray-600 hover:fill-indigo-600 text-gray-600 hover:text-indigo-600'>
+						<div className=' hidden flex-row	grow-0 shrink pt-1 pr-10pt-1 pr-10 fill-gray-600 hover:fill-indigo-600  text-gray-600 hover:text-indigo-600'>
 							<div>
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
@@ -99,7 +99,7 @@ function Navbar() {
 								<p>Favorites</p>
 							</div>
 							{favItems ? (
-								<span className='bg-red-600 text-white rounded-lg	px-1 py-0 self-start text-sm		'>
+								<span className='bg-red-600 text-white rounded-lg	px-1 py-0 self-start text-sm'>
 									{favItems}
 								</span>
 							) : (
@@ -132,15 +132,15 @@ function Navbar() {
 							)}
 						</div>
 					</Link>
-					<a
-						href='%'
-						className='py-3 px-4 text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow'
+					<Link
+						to='/cart'
+						className='py-3 px-4 text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow w-full'
 					>
-						Log-in
-					</a>
+						Cart
+					</Link>
 				</div>
 			</div>
-			<form
+			{/* <form
 				onSubmit={e => e.preventDefault()}
 				className='max-w-md px-4 mx-auto -mt-12'
 			>
@@ -165,7 +165,7 @@ function Navbar() {
 						className='w-full py-3 pl-12 pr-4 text-gray-500 border rounded-md outline-none bg-gray-50 focus:bg-white focus:border-indigo-600'
 					/>
 				</div>
-			</form>
+			</form> */}
 		</nav>
 	)
 }

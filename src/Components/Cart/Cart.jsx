@@ -74,16 +74,16 @@ function Cart() {
 						{cart.cartItems?.map(cartItem => (
 							<div
 								className='grid items-center grid-cols-cart gap-x-2 border-t border-zinc-600 pt-2'
-								key={cartItem[1]}
+								key={cartItem.id}
 							>
 								<div className='flex my-4'>
 									<img
 										className='rounded-t-lg w-24 max-w-full	mr-4'
-										src={cartItem[2]}
+										src={cartItem.image}
 										alt=''
 									/>
 									<div>
-										<h3 className='font-normal'>{cartItem[1]}</h3>
+										<h3 className='font-normal'>{cartItem.title}</h3>
 										<button
 											className='mt-3 text-zinc-700 hover:text-black'
 											onClick={() => handleRemoveFromCart(cartItem)}
@@ -92,7 +92,7 @@ function Cart() {
 										</button>
 									</div>
 								</div>
-								<div>{cartItem[0]}</div>
+								<div>{cartItem.price}</div>
 								<div className='flex justify-center w-28 max-w-full border border-zinc-600 rounded-md'>
 									<button
 										className='pr-4 py-2 text-xl'
@@ -111,7 +111,7 @@ function Cart() {
 									</button>
 								</div>
 								<div className='font-semibold'>
-									$ {(cartItem[3] * cartItem.cartQuantity).toFixed(2)}
+									$ {(cartItem.price * cartItem.cartQuantity).toFixed(2)}
 								</div>
 							</div>
 						))}

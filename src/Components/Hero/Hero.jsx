@@ -15,38 +15,28 @@ function Hero() {
 		dispatch(getProducts())
 	}, [dispatch])
 
-	let properProducts = products
-	properProducts = properProducts?.map(item => {
-		const value = item.price
-		const itemName = item.title
-		let image = item.image
-		const fullValue = item.price
-		const code = item.id
-		return [value, itemName, image, fullValue, code]
-	})
-
 	return (
 		<>
 			<div className='griden '>
-				{properProducts?.map(item => (
-					<div key={item[4]} className='mt-5 mx-10'>
+				{products?.map(item => (
+					<div key={item.id} className='mt-5 mx-10'>
 						<div className='max-w-2xl mx-auto '>
 							<div className='bg-white shadow-md border border-gray-200 rounded-lg  max-w-sm dark:bg-gray-800 dark:border-gray-700'>
 								<a href='%'>
 									<img
 										className='h-80 w-full rounded-t-lg'
-										src={item[2]}
+										src={item.image}
 										alt=''
 									/>
 								</a>
 								<div className='p-5  min-h-50'>
 									<a href='%'>
-										<h5 className='text-gray-900 font-bold text-xl tracking-tight mb-2 dark:text-white h-28'>
-											{item[1]}
+										<h5 className='text-gray-900 font-bold text-xl tracking-tight mb-2 dark:text-white h-40'>
+											{item.title}
 										</h5>
 									</a>
 									<p className='font-normal text-gray-700 mb-3 dark:text-gray-400 h-full'>
-										Price: $ {item[0]}
+										Price: $ {item.price}
 									</p>
 									<button
 										className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
