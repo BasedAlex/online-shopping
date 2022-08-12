@@ -132,12 +132,12 @@ function Navbar() {
 							)}
 						</div>
 					</Link>
-					<Link
+					{/* <Link
 						to='/cart'
 						className='py-3 px-4 text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow w-full'
 					>
 						Cart
-					</Link>
+					</Link> */}
 				</div>
 			</div>
 			{/* <form
