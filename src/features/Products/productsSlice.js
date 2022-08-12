@@ -51,14 +51,14 @@ export const productsSlice = createSlice({
 		},
 		removeFromCart: (state, action) => {
 			const nextCartItems = state.cartItems.filter(
-				cartItem => cartItem[1] !== action.payload[1]
+				cartItem => cartItem.id !== action.payload.id
 			)
 			state.cartItems = nextCartItems
 			localStorage.setItem('cartItems', JSON.stringify([...nextCartItems]))
 		},
 		decreaseCart: (state, action) => {
 			const itemIndex = state.cartItems.findIndex(
-				item => item[1] === action.payload[1]
+				item => item.id === action.payload.id
 			)
 			state.cartTotalQuantity--
 			if (state.cartItems[itemIndex].cartQuantity > 1) {
@@ -66,7 +66,7 @@ export const productsSlice = createSlice({
 				localStorage.setItem('cartItems', JSON.stringify([...state.cartItems]))
 			} else {
 				const nextCartItems = state.cartItems.filter(
-					cartItem => cartItem[1] !== action.payload[1]
+					cartItem => cartItem.id !== action.payload.id
 				)
 				state.cartItems = nextCartItems
 				localStorage.setItem('cartItems', JSON.stringify(nextCartItems))
