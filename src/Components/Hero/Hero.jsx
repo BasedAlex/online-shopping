@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react'
 import '../../input.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart, getProducts } from '../../features/Products/productsSlice'
+import { addToCartAction } from '../../store/reducers/cart/cart-action-creators'
+import { getProducts } from '../../api/api'
 
 function Hero() {
 	const dispatch = useDispatch()
-	const products = useSelector(state => state.product.products)
+	const products = useSelector(state => state.cart.products)
+
+	console.log(products)
 
 	const handleAddToCart = product => {
-		dispatch(addToCart(product))
+		dispatch(addToCartAction(product))
 	}
 
 	useEffect(() => {
