@@ -1,37 +1,47 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import {
-	addToCart,
-	clearCart,
-	decreaseCart,
-	getTotals,
-	removeFromCart,
-} from '../../features/Products/productsSlice'
+	addToCartAction,
+	clearCartAction,
+	decreaseCartAction,
+	removeFromCartAction,
+} from '../../store/reducers/cart/cart-action-creators'
+
+import { totalPriceSelector } from '../../store/reducers/cart/cart-selectors'
 
 function Cart() {
-	const cart = useSelector(state => state.product)
+	const cart = useSelector(state => state.cart)
+
+	console.log(cart)
+
+	const totalPrice = useSelector(totalPriceSelector)
+
+	console.log(totalPrice)
 
 	const dispatch = useDispatch()
 
-	useEffect(() => {
-		dispatch(getTotals())
-	}, [cart, dispatch])
+	// const getTotals = totalPriceSelector(cart)
+	// console.log(getTotals)
+
+	// useEffect(() => {
+	// 	dispatch(getTotals())
+	// }, [cart, dispatch])
 
 	const handleRemoveFromCart = cartItem => {
-		dispatch(removeFromCart(cartItem))
+		dispatch(removeFromCartAction(cartItem))
 	}
 
 	const handleDecreaseCart = cartItem => {
-		dispatch(decreaseCart(cartItem))
+		dispatch(decreaseCartAction(cartItem))
 	}
 
 	const handleIncreaseCart = cartItem => {
-		dispatch(addToCart(cartItem))
+		dispatch(addToCartAction(cartItem))
 	}
 
 	const handleClearCart = () => {
-		dispatch(clearCart())
+		dispatch(clearCartAction())
 	}
 
 	return (
@@ -127,7 +137,8 @@ function Cart() {
 							<div className='flex justify-between text-xl'>
 								<span>Subtotal</span>
 								<span className='font-bold'>
-									${cart.cartTotalAmount.toFixed(2)}
+									{/* ${cart.cartTotalAmount.toFixed(2)} */}
+									{totalPrice.toFixed(2)}
 								</span>
 							</div>
 							<p className='text-sm font-extralight my-2 mt-0	'>

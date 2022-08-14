@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 function Navbar() {
 	const [state, setState] = useState(false)
 
-	const { cartTotalQuantity } = useSelector(state => state.product)
+	const cartTotalQuantity = useSelector(state => state.cart.cartTotalQuantity)
 
 	const favItems = 1
 
