@@ -1,14 +1,19 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../input.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCartAction } from '../../store/reducers/cart/cart-action-creators'
-import { getProducts } from '../../api/api'
+import { addToCartAction } from '../../store/reducers/cart/cart-action'
+import { getProducts } from '../../store/reducers/shop/shop-reducer'
+import Button from '../../UI/Button'
 
-function Hero() {
+function Card() {
 	const dispatch = useDispatch()
-	const products = useSelector(state => state.cart.products)
+	const products = useSelector(state => state.products.products)
 
-	console.log(products)
+	const [visible, setVisible] = useState(5)
+
+	const showMoreItems = () => {
+		setVisible(prevValue => prevValue + 5)
+	}
 
 	const handleAddToCart = product => {
 		dispatch(addToCartAction(product))
@@ -20,11 +25,11 @@ function Hero() {
 
 	return (
 		<>
-			<div className='griden '>
-				{products?.map(item => (
+			<div className='2xl:griden-2xl xl:griden-xl lg:griden-lg md:griden-md sm:griden-sm'>
+				{products?.slice(0, visible).map(item => (
 					<div key={item.id} className='mt-5 mx-10'>
 						<div className='max-w-2xl mx-auto '>
-							<div className='bg-white shadow-md border border-gray-200 rounded-lg  max-w-sm dark:bg-gray-800 dark:border-gray-700'>
+							<div className='bg-white shadow-md border border-gray-200 rounded-lg align-center max-w-sm dark:bg-gray-800 dark:border-gray-700'>
 								<a href='%'>
 									<img
 										className='h-80 w-full rounded-t-lg'
@@ -39,13 +44,13 @@ function Hero() {
 										</h5>
 									</a>
 									<p className='font-normal text-gray-700 mb-3 dark:text-gray-400 h-full'>
-										Price: $ {item.price}
+										Цена: $ {item.price}
 									</p>
-									<button
-										className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+									<Button
+										btnStyle='btn-blue'
 										onClick={() => handleAddToCart(item)}
 									>
-										Add to cart
+										Добавить в корзину
 										<svg
 											className='-mr-1 ml-2 h-4 w-4'
 											fill='currentColor'
@@ -58,15 +63,24 @@ function Hero() {
 												clipRule='evenodd'
 											></path>
 										</svg>
-									</button>
+									</Button>
 								</div>
 							</div>
 						</div>
 					</div>
 				))}
 			</div>
+			<div className='flex items-center justify-center'>
+				<Button
+					className=''
+					btnStyle='btn-blue w-36 my-4 2xl:mr-24'
+					onClick={() => showMoreItems()}
+				>
+					Загрузить ещё
+				</Button>
+			</div>
 		</>
 	)
 }
 
-export default Hero
+export default Card

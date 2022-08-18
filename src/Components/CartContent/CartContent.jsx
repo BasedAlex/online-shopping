@@ -6,27 +6,19 @@ import {
 	clearCartAction,
 	decreaseCartAction,
 	removeFromCartAction,
-} from '../../store/reducers/cart/cart-action-creators'
+} from '../../store/reducers/cart/cart-action'
 
 import { totalPriceSelector } from '../../store/reducers/cart/cart-selectors'
+import Button from '../../UI/Button'
 
-function Cart() {
+function CartContent() {
 	const cart = useSelector(state => state.cart)
-
-	console.log(cart)
 
 	const totalPrice = useSelector(totalPriceSelector)
 
 	console.log(totalPrice)
 
 	const dispatch = useDispatch()
-
-	// const getTotals = totalPriceSelector(cart)
-	// console.log(getTotals)
-
-	// useEffect(() => {
-	// 	dispatch(getTotals())
-	// }, [cart, dispatch])
 
 	const handleRemoveFromCart = cartItem => {
 		dispatch(removeFromCartAction(cartItem))
@@ -45,18 +37,17 @@ function Cart() {
 	}
 
 	return (
-		<div className='py-8 px-16'>
-			<h2 className='font-normal text-3xl text-center'>Shopping Cart</h2>
-			{cart.cartItems.length === 0 ? (
+		<>
+			{cart.items.length === 0 ? (
 				<div className='flex flex-col items-center font-normal text-xl mt-2'>
-					<p>Your cart is currently empty</p>
+					<p>Ваша корзина пуста</p>
 					<div>
 						<Link to='/'>
 							<span className='flex gap-2'>
-								Start Shopping
+								Начать покупки
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
-									className='h-6 w-6 mt-2'
+									className='h-6 w-6 mt-1'
 									fill='none'
 									viewBox='0 0 24 24'
 									stroke='currentColor'
@@ -75,13 +66,15 @@ function Cart() {
 			) : (
 				<div>
 					<div className='grid mt-8 mx-0 mb-4 grid-cols-cart	'>
-						<h3 className='font-normal text-sm uppercase pl-4'>Product</h3>
-						<h3 className='font-normal text-sm uppercase'>Price</h3>
-						<h3 className='font-normal text-sm uppercase'>Quantity</h3>
-						<h3 className='font-normal text-sm uppercase pr-4 '>Total</h3>
+						<h3 className='font-normal text-sm uppercase pl-4'>Продукт</h3>
+						<h3 className='font-normal text-sm uppercase'>Цена</h3>
+						<h3 className='font-normal text-sm uppercase'>Количество</h3>
+						<h3 className='font-normal text-sm uppercase pr-4 '>
+							Конечная цена
+						</h3>
 					</div>
 					<div className=''>
-						{cart.cartItems?.map(cartItem => (
+						{cart.items?.map(cartItem => (
 							<div
 								className='grid items-center grid-cols-cart gap-x-2 border-t border-zinc-600 pt-2'
 								key={cartItem.id}
@@ -98,7 +91,7 @@ function Cart() {
 											className='mt-3 text-zinc-700 hover:text-black'
 											onClick={() => handleRemoveFromCart(cartItem)}
 										>
-											Remove
+											Удалить
 										</button>
 									</div>
 								</div>
@@ -127,30 +120,23 @@ function Cart() {
 						))}
 					</div>
 					<div className='flex justify-between items-start border-t border-zinc-600 pt-8 pr-16'>
-						<button
-							className='w-32 max-w-full h-10 rounded-md font-normal tracking-wide border border-zinc-600 text-zinc-500 hover:text-black'
-							onClick={() => handleClearCart()}
-						>
-							Clear Cart
-						</button>
+						<Button btnStyle='btn-white' onClick={() => handleClearCart()}>
+							Очистить
+						</Button>
 						<div className='w-48 max-w-full'>
 							<div className='flex justify-between text-xl'>
 								<span>Subtotal</span>
-								<span className='font-bold'>
-									{/* ${cart.cartTotalAmount.toFixed(2)} */}
-									{totalPrice.toFixed(2)}
-								</span>
+								<span className='font-bold'>{totalPrice.toFixed(2)}</span>
 							</div>
 							<p className='text-sm font-extralight my-2 mt-0	'>
-								Prices are already adjusted
+								Конечная цена уже указана
 							</p>
-							<button className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center tracking-wide border inline-flex items-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-40 max-w-full'>
-								Checkout
-							</button>
+							<Button btnStyle='btn-blue'>Купить</Button>
+
 							<div>
 								<Link to='/'>
 									<span className='mt-4 text-gray-500 flex items-center pl pr-2 gap-2'>
-										Continue Shopping
+										Продолжить покупки
 										<svg
 											xmlns='http://www.w3.org/2000/svg'
 											className='h-6 w-6'
@@ -172,8 +158,8 @@ function Cart() {
 					</div>
 				</div>
 			)}
-		</div>
+		</>
 	)
 }
 
-export default Cart
+export default CartContent
