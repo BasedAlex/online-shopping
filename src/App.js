@@ -1,9 +1,9 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
-import Cart from './Components/Cart/Cart'
-import Hero from './Components/Hero/Hero'
-import InvalidLink from './Components/InvalidLink/InvalidLink'
-import Navbar from './Components/Navbar/Navbar'
+import Cart from './pages/Cart/Cart'
+import InvalidLink from './pages/InvalidLink/InvalidLink'
+import Navbar from './components/Navbar/Navbar'
+import Main from './pages/Main/Main'
 
 function App() {
 	return (
@@ -14,7 +14,7 @@ function App() {
 				<Routes>
 					<Route path='/not-found' element={<InvalidLink />} />
 					<Route path='/cart' exact element={<Cart />} />
-					<Route path='/' exact element={<Hero />} />
+					<Route path='/' exact element={<Main />} />
 					<Route path='/*' element={<Navigate replace to='/not-found' />} />
 				</Routes>
 			</BrowserRouter>
