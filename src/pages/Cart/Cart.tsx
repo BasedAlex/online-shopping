@@ -1,19 +1,20 @@
 import React from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { ItemsType } from 'store/reducers/cart/cart-reducer';
+import { RootState } from 'store/store';
 import {
   addToCartAction,
   clearCartAction,
   decreaseCartAction,
   removeFromCartAction,
-} from '../../store/reducers/cart/cart-action.js';
+} from '../../store/reducers/cart/cart-action';
 
 import { totalPriceSelector } from '../../store/reducers/cart/cart-selectors';
 import Button from '../../UI/Button';
 
 function Cart() {
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector((state: RootState) => state.cart);
 
   const totalPrice = useSelector(totalPriceSelector);
 
@@ -21,15 +22,15 @@ function Cart() {
 
   const dispatch = useDispatch();
 
-  const handleRemoveFromCart = (cartItem) => {
+  const handleRemoveFromCart = (cartItem: ItemsType) => {
     dispatch(removeFromCartAction(cartItem));
   };
 
-  const handleDecreaseCart = (cartItem) => {
+  const handleDecreaseCart = (cartItem: ItemsType) => {
     dispatch(decreaseCartAction(cartItem));
   };
 
-  const handleIncreaseCart = (cartItem) => {
+  const handleIncreaseCart = (cartItem: ItemsType) => {
     dispatch(addToCartAction(cartItem));
   };
 
@@ -74,7 +75,7 @@ function Cart() {
             <h3 className="font-normal text-sm uppercase pr-4 ">Конечная цена</h3>
           </div>
           <div className="">
-            {cart.items?.map((cartItem) => (
+            {cart.items?.map((cartItem: ItemsType) => (
               <div
                 className="grid items-center grid-cols-cart gap-x-2 border-t border-zinc-600 pt-2"
                 key={cartItem.id}

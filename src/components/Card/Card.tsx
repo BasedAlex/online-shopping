@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from 'react';
-// import '../../input.css'
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { addToCartAction } from '../../store/reducers/cart/cart-action';
-import { getProducts } from '../../store/reducers/shop/shop-reducer';
 import Button from '../../UI/Button';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import { ItemsType } from 'store/reducers/cart/cart-reducer';
 
 function Card() {
+  const { isLoading, data } = useQuery(['products'], () => {
+    return axios.get('https://fakestoreapi.com/products');
+  });
+
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products.products);
 
   const [visible, setVisible] = useState(5);
 
@@ -15,18 +19,18 @@ function Card() {
     setVisible((prevValue) => prevValue + 5);
   };
 
-  const handleAddToCart = (product) => {
+  const handleAddToCart = (product: ItemsType) => {
     dispatch(addToCartAction(product));
   };
 
-  useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
+  if (isLoading) {
+    return <h2>Загрузка...</h2>;
+  }
 
   return (
     <>
       <div className="2xl:griden-2xl xl:griden-xl lg:griden-lg md:griden-md sm:griden-sm">
-        {products?.slice(0, visible).map((item) => (
+        {data!.data?.slice(0, visible).map((item: ItemsType) => (
           <div key={item.id} className="mt-5 mx-10">
             <div className="max-w-2xl mx-auto ">
               <div className="bg-white shadow-md border border-gray-200 rounded-lg align-center max-w-sm dark:bg-gray-800 dark:border-gray-700">
@@ -64,11 +68,7 @@ function Card() {
         ))}
       </div>
       <div className="flex items-center justify-center">
-        <Button
-          className=""
-          btnStyle="btn-blue w-36 my-4 2xl:mr-24"
-          onClick={() => showMoreItems()}
-        >
+        <Button btnStyle="btn-blue w-36 my-4 2xl:mr-24" onClick={() => showMoreItems()}>
           Загрузить ещё
         </Button>
       </div>
