@@ -1,5 +1,4 @@
-import { createReducer } from '@reduxjs/toolkit';
-import { RootState } from 'store/store';
+import { createReducer, PayloadAction } from '@reduxjs/toolkit';
 import {
   addToCartAction,
   clearCartAction,
@@ -19,7 +18,6 @@ export type ItemsType = {
   description: string;
   category: string;
   image: string;
-  rating: any;
   cartQuantity: number;
 };
 
@@ -30,7 +28,7 @@ export const initialState: InitialStateType = {
 
 export const cartReducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(addToCartAction, (state, action: any) => {
+    .addCase(addToCartAction, (state, action: PayloadAction<ItemsType>) => {
       const itemIndex = state.items.findIndex((item) => item.id === action.payload.id);
       state.cartTotalQuantity++;
       if (itemIndex >= 0) {
@@ -40,11 +38,11 @@ export const cartReducer = createReducer(initialState, (builder) => {
         state.items.push(tempProduct);
       }
     })
-    .addCase(removeFromCartAction, (state, action: any) => {
+    .addCase(removeFromCartAction, (state, action: PayloadAction<ItemsType>) => {
       const nextCartItems = state.items.filter((cartItem) => cartItem.id !== action.payload.id);
       state.items = nextCartItems;
     })
-    .addCase(decreaseCartAction, (state, action: any) => {
+    .addCase(decreaseCartAction, (state, action: PayloadAction<ItemsType>) => {
       const itemIndex = state.items.findIndex((item) => item.id === action.payload.id);
       state.cartTotalQuantity--;
       if (state.items[itemIndex].cartQuantity > 1) {
