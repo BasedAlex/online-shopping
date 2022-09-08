@@ -4,6 +4,6 @@ import { ItemsType } from './cart-reducer';
 
 export const cartItemsSelector = (state: RootState) => state.cart.items;
 
-export const totalPriceSelector = createSelector(cartItemsSelector, (items: any[]) =>
+export const totalPriceSelector = createSelector(cartItemsSelector, (items) =>
   items.reduce((acc: number, item: ItemsType) => acc + item.price * item.cartQuantity, 0)
 );
