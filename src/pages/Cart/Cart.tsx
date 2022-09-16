@@ -1,6 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { ItemsType } from 'store/reducers/cart/cart-reducer';
 import { RootState } from 'store/store';
 import {
@@ -9,18 +8,22 @@ import {
   decreaseCartAction,
   removeFromCartAction,
 } from '../../store/reducers/cart/cart-action';
-
+import { useAuth } from 'hooks/use-auth';
 import { totalPriceSelector } from '../../store/reducers/cart/cart-selectors';
 import Button from '../../UI/Button';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
 
 function Cart() {
-  const cart = useSelector((state: RootState) => state.cart);
+  const { isAuth } = useAuth();
+  const shouldRedirect = true;
 
-  const totalPrice = useSelector(totalPriceSelector);
+  const cart = useAppSelector((state: RootState) => state.cart);
+
+  const totalPrice = useAppSelector(totalPriceSelector);
 
   console.log(totalPrice);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleRemoveFromCart = (cartItem: ItemsType) => {
     dispatch(removeFromCartAction(cartItem));
@@ -38,8 +41,8 @@ function Cart() {
     dispatch(clearCartAction());
   };
 
-  return (
-    <div className="py-8  px-16">
+  return isAuth ? (
+    <div className="py-8 px-16">
       <h2 className="font-normal text-3xl text-center">Корзина</h2>
       {cart.items.length === 0 ? (
         <div className="flex flex-col items-center font-normal text-xl mt-2">
@@ -128,7 +131,25 @@ function Cart() {
                 <span className="font-bold">{totalPrice.toFixed(2)}</span>
               </div>
               <p className="text-sm font-extralight my-2 mt-0	">Конечная цена уже указана</p>
-              <Button btnStyle="btn-blue">Купить</Button>
+
+              {isAuth ? (
+                <button
+                  className="btn-blue"
+                  onClick={() => {
+                    handleClearCart();
+                    alert('Благодарим за покупку!');
+                  }}
+                >
+                  Купить
+                </button>
+              ) : (
+                <button
+                  className="btn-blue"
+                  onClick={() => alert('Чтобы покупать товары, необходимо зарегистрироваться!')}
+                >
+                  Купить
+                </button>
+              )}
 
               <div>
                 <Link to="/">
@@ -156,6 +177,8 @@ function Cart() {
         </div>
       )}
     </div>
+  ) : (
+    <>{shouldRedirect && <Navigate to="/login" />}</>
   );
 }
 

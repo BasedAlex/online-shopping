@@ -5,7 +5,8 @@ import InvalidLink from './pages/InvalidLink/InvalidLink';
 import Navbar from './components/Navbar/Navbar';
 import Main from './pages/Main/Main';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import Login from 'pages/Login/Login';
+import RegisterPage from 'pages/RegisterPage/RegisterPage';
+import LoginPage from 'pages/LoginPage/LoginPage';
 
 const queryClient = new QueryClient();
 
@@ -16,7 +17,8 @@ function App() {
         <Navbar />
 
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/not-found" element={<InvalidLink />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/" element={<Main />} />

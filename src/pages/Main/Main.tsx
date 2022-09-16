@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { addToCartAction } from '../../store/reducers/cart/cart-action';
 import Button from '../../UI/Button';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { ItemsType } from 'store/reducers/cart/cart-reducer';
+import { useAppDispatch } from 'hooks/redux-hooks';
 
 function Main() {
   const { isLoading, data } = useQuery(['products'], () => {
     return axios.get('https://fakestoreapi.com/products');
   });
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [visible, setVisible] = useState(5);
 

@@ -1,34 +1,24 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { RootState } from 'store/store';
 import Button from 'UI/Button';
+import { useAuth } from 'hooks/use-auth';
+import { removeUser } from 'store/reducers/auth/userSlice';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
 
 function Navbar() {
   const [state, setState] = useState(false);
+  const { isAuth } = useAuth();
+  const dispatch = useAppDispatch();
 
-  const [isLogin, setIsLogin] = useState(false);
-
-  const handleLogin = (e: React.FormEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    setIsLogin(true);
-    console.log('Logged in!');
-  };
-
-  const handleLogout = (e: React.FormEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    setIsLogin(false);
-    console.log('Logged out!');
-  };
-
-  const cartTotalQuantity = useSelector((state: RootState) => state.cart.cartTotalQuantity);
+  const cartTotalQuantity = useAppSelector((state: RootState) => state.cart.cartTotalQuantity);
 
   const navigation = [
-    { title: 'Мужская', path: 'male' },
-    { title: 'Женская', path: 'female' },
-    { title: 'Детская', path: 'children' },
+    { title: 'Мужское', path: 'male' },
+    { title: 'Женское', path: 'female' },
+    { title: 'Детское', path: 'children' },
     { title: 'Часы', path: 'watches' },
-    { title: 'Ювелирные', path: 'jewellery' },
+    { title: 'Изделия', path: 'jewellery' },
     { title: 'Бренды', path: 'brands' },
   ];
 
@@ -138,8 +128,10 @@ function Navbar() {
               )}
             </div>
           </Link>
-          {isLogin ? (
-            <Button btnStyle="btn-blue w-16">Выйти</Button>
+          {isAuth ? (
+            <button className="btn-blue w-16" onClick={() => dispatch(removeUser())}>
+              Выйти
+            </button>
           ) : (
             <Link to="/login">
               <Button btnStyle="btn-blue w-16">Войти</Button>
