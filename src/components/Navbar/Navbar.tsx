@@ -2,34 +2,69 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store/store';
+import Button from 'UI/Button';
 
 function Navbar() {
   const [state, setState] = useState(false);
 
+  const [isLogin, setIsLogin] = useState(false);
+
+  const handleLogin = (e: React.FormEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setIsLogin(true);
+    console.log('Logged in!');
+  };
+
+  const handleLogout = (e: React.FormEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setIsLogin(false);
+    console.log('Logged out!');
+  };
+
   const cartTotalQuantity = useSelector((state: RootState) => state.cart.cartTotalQuantity);
+
+  const navigation = [
+    { title: 'Мужская', path: 'male' },
+    { title: 'Женская', path: 'female' },
+    { title: 'Детская', path: 'children' },
+    { title: 'Часы', path: 'watches' },
+    { title: 'Ювелирные', path: 'jewellery' },
+    { title: 'Бренды', path: 'brands' },
+  ];
 
   return (
     <nav className="bg-white w-full border-b md:border-0 md:static mt-8">
-      <div className="items-center justify-between px-4 max-w-screen-xl mx-auto">
-        <div className="flex items-center justify-between py-3">
-          <div className="hidden">
+      <div className="flex md:flex-row xs:flex-col justify-center px-4 max-w-screen-xl min-w-screen-md mx-auto">
+        <div className="flex self-center items-center justify-between py-3">
+          <div className="md:hidden">
             <button
               className="text-gray-700 outline-none p-2 rounded-md focus:border-gray-400 focus:border"
               onClick={() => setState(!state)}
             >
               {state ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  viewBox="0 0 30 30"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                <>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    viewBox="0 0 30 30"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <ul className="justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0">
+                    {navigation.map((item, idx) => {
+                      return (
+                        <li key={idx} className="text-gray-600 hover:text-indigo-600">
+                          <a>{item.title}</a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </>
               ) : (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -48,9 +83,18 @@ function Navbar() {
               )}
             </button>
           </div>
+          <ul className="justify-center items-center space-y-8 md:flex hidden md:space-x-6 md:space-y-0">
+            {navigation.map((item, idx) => {
+              return (
+                <li key={idx} className="text-gray-600 hover:text-indigo-600">
+                  <a>{item.title}</a>
+                </li>
+              );
+            })}
+          </ul>
         </div>
 
-        <div className="flex items-center">
+        <div className="flex items-center self-center ">
           <div className="align-center ">
             <div className=" hidden flex-row	grow-0 shrink pt-1 pr-10pt-1 pr-10 fill-gray-600 hover:fill-indigo-600  text-gray-600 hover:text-indigo-600">
               <div>
@@ -70,8 +114,8 @@ function Navbar() {
             </div>
           </div>
           <Link to="/cart">
-            <div className="flex flex-row	grow-0 shrink pt-1 pr-10 fill-gray-600 hover:fill-indigo-600 text-gray-600 hover:text-indigo-600 ">
-              <div className="sm:ml-6">
+            <div className="flex flex-row	grow-0 shrink pt-1 pr-10 fill-gray-600 hover:fill-indigo-600 text-gray-600 hover:text-indigo-600 ml-8">
+              <div className="xs:ml-6 ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -86,7 +130,7 @@ function Navbar() {
                 <p>Корзина</p>
               </div>
               {cartTotalQuantity ? (
-                <span className="bg-red-600 text-white rounded-lg	px-1 py-0 self-start text-sm		">
+                <span className="bg-red-600 text-white rounded-lg	px-1 py-0 self-start text-sm">
                   {cartTotalQuantity}
                 </span>
               ) : (
@@ -94,6 +138,13 @@ function Navbar() {
               )}
             </div>
           </Link>
+          {isLogin ? (
+            <Button btnStyle="btn-blue w-16">Выйти</Button>
+          ) : (
+            <Link to="/login">
+              <Button btnStyle="btn-blue w-16">Войти</Button>
+            </Link>
+          )}
         </div>
       </div>
     </nav>

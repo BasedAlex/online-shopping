@@ -39,7 +39,7 @@ function Cart() {
   };
 
   return (
-    <div className="py-8 px-16">
+    <div className="py-8  px-16">
       <h2 className="font-normal text-3xl text-center">Корзина</h2>
       {cart.items.length === 0 ? (
         <div className="flex flex-col items-center font-normal text-xl mt-2">
@@ -69,10 +69,12 @@ function Cart() {
       ) : (
         <div>
           <div className="grid mt-8 mx-0 mb-4 grid-cols-cart	">
-            <h3 className="font-normal text-sm uppercase pl-4">Продукт</h3>
-            <h3 className="font-normal text-sm uppercase">Цена</h3>
-            <h3 className="font-normal text-sm uppercase">Количество</h3>
-            <h3 className="font-normal text-sm uppercase pr-4 ">Конечная цена</h3>
+            <h3 className="font-normal text-3xs xl:text-sm md:text-xs uppercase pl-4">Продукт</h3>
+            <h3 className="font-normal text-3xs xl:text-sm md:text-xs uppercase">Цена</h3>
+            <h3 className="font-normal text-3xs xl:text-sm md:text-xs uppercase">Количество</h3>
+            <h3 className="font-normal text-3xs xl:text-sm md:text-xs uppercase pr-4 ">
+              Конечная цена
+            </h3>
           </div>
           <div className="">
             {cart.items?.map((cartItem: ItemsType) => (
@@ -80,9 +82,9 @@ function Cart() {
                 className="grid items-center grid-cols-cart gap-x-2 border-t border-zinc-600 pt-2"
                 key={cartItem.id}
               >
-                <div className="flex my-4">
-                  <img className="rounded-t-lg w-24 max-w-full	mr-4" src={cartItem.image} alt="" />
-                  <div>
+                <div className="flex my-4 ">
+                  <img className="rounded-t-lg w-24 max-w-fullmr-4" src={cartItem.image} alt="" />
+                  <div className="ml-2">
                     <h3 className="font-normal">{cartItem.title}</h3>
                     <button
                       className="mt-3 text-zinc-700 hover:text-black"
@@ -92,23 +94,25 @@ function Cart() {
                     </button>
                   </div>
                 </div>
-                <div>{cartItem.price}</div>
-                <div className="flex justify-center w-28 max-w-full border border-zinc-600 rounded-md">
+                <div className="text-xxs xl:text-xl md:text-xs">{cartItem.price}</div>
+                <div className="flex justify-center w-28 max-w-full border border-zinc-600 rounded-md ">
                   <button
-                    className="pr-4 py-2 text-xl"
+                    className="pr-4 py-2 text-xxs xl:text-xl md:text-xs"
                     onClick={() => handleDecreaseCart(cartItem)}
                   >
                     -
                   </button>
-                  <div className="px-1 py-2 text-xl ">{cartItem.cartQuantity}</div>
+                  <div className="px-1 py-2 text-xxs xl:text-xl md:text-xs ">
+                    {cartItem.cartQuantity}
+                  </div>
                   <button
-                    className="pl-4 py-2 text-xl"
+                    className="pl-4 py-2 text-xxs xl:text-xl md:text-xs"
                     onClick={() => handleIncreaseCart(cartItem)}
                   >
                     +
                   </button>
                 </div>
-                <div className="font-semibold">
+                <div className="font-semibold text-xxs xl:text-xl md:text-xs">
                   $ {(cartItem.price * cartItem.cartQuantity).toFixed(2)}
                 </div>
               </div>
@@ -120,7 +124,7 @@ function Cart() {
             </Button>
             <div className="w-48 max-w-full">
               <div className="flex justify-between text-xl">
-                <span>Subtotal</span>
+                <span>Итого:</span>
                 <span className="font-bold">{totalPrice.toFixed(2)}</span>
               </div>
               <p className="text-sm font-extralight my-2 mt-0	">Конечная цена уже указана</p>
