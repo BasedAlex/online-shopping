@@ -9,7 +9,10 @@ function LoginPage() {
         <h1>Войдите, чтобы приобретать товары</h1>
         <Login />
         <p>
-          Или <Link to="/register">зарегистрируйтесь</Link>
+          Или{' '}
+          <Link to="/register" className="text-blue-500 hover:text-black">
+            зарегистрируйтесь
+          </Link>
         </p>
       </div>
     </>
