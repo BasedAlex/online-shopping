@@ -3,7 +3,7 @@ import React from 'react';
 type ButtonProps = {
   children?: React.ReactNode;
   btnStyle?: string;
-  onClick?: () => void | any;
+  onClick?: () => void;
 };
 
 const Button = ({ children, btnStyle, onClick }: ButtonProps) => {
