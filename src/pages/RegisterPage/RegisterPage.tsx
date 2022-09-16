@@ -9,7 +9,10 @@ function RegisterPage() {
         <h1>Зарегистрируйтесь, чтобы приобретать товары</h1>
         <SignUp />
         <p>
-          Уже зарегистрированы? <Link to="/login">Войдите!</Link>
+          Уже зарегистрированы?{' '}
+          <Link to="/login" className="text-blue-500 hover:text-black">
+            Войдите!
+          </Link>
         </p>
       </div>
     </>
