@@ -5,6 +5,7 @@ import Button from 'UI/Button';
 import { useAuth } from 'hooks/use-auth';
 import { removeUser } from 'store/reducers/auth/userSlice';
 import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
+import logo from '../../assets/images/shopping-logo.png';
 
 function Navbar() {
   const [state, setState] = useState(false);
@@ -25,8 +26,13 @@ function Navbar() {
   return (
     <nav className="bg-white w-full border-b md:border-0 md:static mt-8">
       <div className="flex md:flex-row xs:flex-col justify-center px-4 max-w-screen-xl min-w-screen-md mx-auto">
+        <Link to="/">
+          <a href="%">
+            <img src={logo} width={120} height={50} alt="logo" />
+          </a>
+        </Link>
         <div className="flex self-center items-center justify-between py-3">
-          <div className="md:hidden">
+          <div className="xs:hidden">
             <button
               className="text-gray-700 outline-none p-2 rounded-md focus:border-gray-400 focus:border"
               onClick={() => setState(!state)}
@@ -73,7 +79,7 @@ function Navbar() {
               )}
             </button>
           </div>
-          <ul className="justify-center items-center space-y-8 md:flex hidden md:space-x-6 md:space-y-0">
+          <ul className="justify-center items-center space-y-8 xs:flex  md:space-x-6 md:space-y-0">
             {navigation.map((item, idx) => {
               return (
                 <li key={idx} className="text-gray-600 hover:text-indigo-600">

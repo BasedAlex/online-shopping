@@ -1,0 +1,12 @@
+/* This file is used for classes that are currently not working in tailwindcss */
+
+.lineClamp4 {
+  display: -webkit-box;
+  max-width: 400px;
+  height: 109.2px;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.625;
+}

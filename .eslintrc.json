@@ -18,6 +18,6 @@
     "sourceType": "module"
   },
   "plugins": ["react"],
-  "ignorePatterns": ["tailwind.config.js", "/tailwind.config.js/*.js", "firebase.ts"],
+  "ignorePatterns": ["tailwind.config.js", "/tailwind.config.js/*.js", "index.css", "firebase.ts"],
   "rules": { "react/prop-types": "off", "@typescript-eslint/no-non-null-assertion": "off" }
 }
