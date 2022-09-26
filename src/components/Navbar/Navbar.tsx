@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { RootState } from 'store/store';
 import Button from 'UI/Button';
@@ -25,61 +25,13 @@ function Navbar() {
 
   return (
     <nav className="bg-white w-full border-b md:border-0 md:static mt-8">
-      <div className="flex md:flex-row xs:flex-col justify-center px-4 max-w-screen-xl min-w-screen-md mx-auto">
+      <div className="flex flex-row justify-center px-4 max-w-screen-xl min-w-screen-md mx-auto">
         <Link to="/">
-          <a href="%">
-            <img src={logo} width={120} height={50} alt="logo" />
-          </a>
+          <img src={logo} className="" width={120} height={50} alt="logo" />
         </Link>
         <div className="flex self-center items-center justify-between py-3">
-          <div className="xs:hidden">
-            <button
-              className="text-gray-700 outline-none p-2 rounded-md focus:border-gray-400 focus:border"
-              onClick={() => setState(!state)}
-            >
-              {state ? (
-                <>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    viewBox="0 0 30 30"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <ul className="justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-                    {navigation.map((item, idx) => {
-                      return (
-                        <li key={idx} className="text-gray-600 hover:text-indigo-600">
-                          <a>{item.title}</a>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 8h16M4 16h16"
-                  />
-                </svg>
-              )}
-            </button>
-          </div>
-          <ul className="justify-center items-center space-y-8 xs:flex  md:space-x-6 md:space-y-0">
+          <div className="2xl:hidden"></div>
+          <ul className="xxs:hidden lg:flex justify-center items-center space-y-8  xs:space-x-6 xs:space-y-0">
             {navigation.map((item, idx) => {
               return (
                 <li key={idx} className="text-gray-600 hover:text-indigo-600">
@@ -92,7 +44,7 @@ function Navbar() {
 
         <div className="flex items-center self-center ">
           <div className="align-center ">
-            <div className=" hidden flex-row	grow-0 shrink pt-1 pr-10pt-1 pr-10 fill-gray-600 hover:fill-indigo-600  text-gray-600 hover:text-indigo-600">
+            <div className="hidden flex-row	grow-0 shrink pt-1 pr-10pt-1 pr-10 fill-gray-600 hover:fill-indigo-600  text-gray-600 hover:text-indigo-600">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -144,7 +96,62 @@ function Navbar() {
             </Link>
           )}
         </div>
+        <button
+          className="lg:hidden text-gray-700 outline-none pt-2 pl-2 ml-2 self-center rounded-md focus:border-gray-400 focus:border"
+          onClick={() => {
+            setState(!state);
+          }}
+        >
+          {state ? (
+            <>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                viewBox="0 0 30 30"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </>
+          ) : (
+            <>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 30 30"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 8h16M4 16h16"
+                />
+              </svg>
+            </>
+          )}
+        </button>
       </div>
+      {state ? (
+        <div className="text-end ">
+          <ul className="space-y-2 md:hidden rounded-lg ml-8 p-2 pr-8 xs:flex xs:space-x-6 xs:space-y-0	bg-blue-100">
+            {navigation.map((item, idx) => {
+              return (
+                <li key={idx} className="text-gray-600 hover:text-indigo-600">
+                  <a>{item.title}</a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ) : (
+        ''
+      )}
     </nav>
   );
 }

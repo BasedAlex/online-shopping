@@ -42,7 +42,7 @@ function Cart() {
   };
 
   return isAuth ? (
-    <div className="py-8 px-16">
+    <div className="py px 2xl:py-8 xs:px-16">
       <h2 className="font-normal text-3xl text-center">Корзина</h2>
       {cart.items.length === 0 ? (
         <div className="flex flex-col items-center font-normal text-xl mt-2">
@@ -98,18 +98,18 @@ function Cart() {
                   </div>
                 </div>
                 <div className="text-xxs xl:text-xl md:text-xs">{cartItem.price}</div>
-                <div className="flex justify-center w-28 max-w-full border border-zinc-600 rounded-md ">
+                <div className="flex justify-center md:w-28 sm:w-16 xs:w-14 xss:w-12 max-w-full border border-zinc-600 rounded-md ">
                   <button
-                    className="pr-4 py-2 text-xxs xl:text-xl md:text-xs"
+                    className="lg:pr-4 xs:pr-0 py-2 text-xxs xl:text-xl md:text-xs "
                     onClick={() => handleDecreaseCart(cartItem)}
                   >
                     -
                   </button>
-                  <div className="px-1 py-2 text-xxs xl:text-xl md:text-xs ">
+                  <div className="lg:pr-4 px-1 xs:pr-0 py-2 xs:m-2 text-xxs xl:text-xl md:text-xs xs:mx">
                     {cartItem.cartQuantity}
                   </div>
                   <button
-                    className="pl-4 py-2 text-xxs xl:text-xl md:text-xs"
+                    className="lg:pl-4 xs:pl-0 py-2 text-xxs xl:text-xl md:text-xs "
                     onClick={() => handleIncreaseCart(cartItem)}
                   >
                     +
@@ -122,7 +122,7 @@ function Cart() {
             ))}
           </div>
           <div className="flex justify-between items-start border-t border-zinc-600 pt-8 pr-16">
-            <Button btnStyle="btn-white" onClick={() => handleClearCart()}>
+            <Button btnStyle="btn-white ml-2" onClick={() => handleClearCart()}>
               Очистить
             </Button>
             <div className="w-48 max-w-full">
