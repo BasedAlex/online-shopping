@@ -32,11 +32,12 @@ module.exports = {
       },
     },
     screens: {
-      xs: '320px',
-      sm: '640px',
-      // => @media (min-width: 640px) { ... }
+      xxs: '320px',
+      xs: '640px',
+      sm: '768px',
+      // => @media (min-width: 768px) { ... }
 
-      md: '768px',
+      md: '960px',
       // => @media (min-width: 768px) { ... }
 
       lg: '1024px',
@@ -49,5 +50,5 @@ module.exports = {
       // => @media (min-width: 1920px) { ... }
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/line-clamp')],
 };
