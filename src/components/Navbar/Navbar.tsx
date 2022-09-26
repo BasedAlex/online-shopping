@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { RootState } from 'store/store';
 import Button from 'UI/Button';
@@ -27,11 +27,11 @@ function Navbar() {
     <nav className="bg-white w-full border-b md:border-0 md:static mt-8">
       <div className="flex flex-row justify-center px-4 max-w-screen-xl min-w-screen-md mx-auto">
         <Link to="/">
-          <img src={logo} className="" width={120} height={50} alt="logo" />
+          <img src={logo} className="h-full" width={120} height={50} alt="logo" />
         </Link>
         <div className="flex self-center items-center justify-between py-3">
           <div className="2xl:hidden"></div>
-          <ul className="xxs:hidden lg:flex justify-center items-center space-y-8  xs:space-x-6 xs:space-y-0">
+          <ul className="hidden lg:flex justify-center items-center space-y-8  xs:space-x-6 xs:space-y-0">
             {navigation.map((item, idx) => {
               return (
                 <li key={idx} className="text-gray-600 hover:text-indigo-600">
