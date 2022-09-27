@@ -42,7 +42,7 @@ function Cart() {
   };
 
   return isAuth ? (
-    <div className="py px 2xl:py-8 xs:px-16">
+    <div className="py md:pt-0 2xl:py-8 xxs:pt-24 xxs:px-8 ">
       <h2 className="font-normal text-3xl text-center">Корзина</h2>
       {cart.items.length === 0 ? (
         <div className="flex flex-col items-center font-normal text-xl mt-2">
@@ -71,7 +71,7 @@ function Cart() {
         </div>
       ) : (
         <div>
-          <div className="grid mt-8 mx-0 mb-4 grid-cols-cart	">
+          <div className="grid mt-8 mx-0 mb-4 grid-cols-cart">
             <h3 className="font-normal text-3xs xl:text-sm md:text-xs uppercase pl-4">Продукт</h3>
             <h3 className="font-normal text-3xs xl:text-sm md:text-xs uppercase">Цена</h3>
             <h3 className="font-normal text-3xs xl:text-sm md:text-xs uppercase">Количество</h3>

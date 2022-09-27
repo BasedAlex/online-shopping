@@ -24,10 +24,10 @@ function Navbar() {
   ];
 
   return (
-    <nav className="bg-white w-full border-b md:border-0 md:static mt-8">
-      <div className="flex flex-row justify-center px-4 max-w-screen-xl min-w-screen-md mx-auto">
-        <Link to="/">
-          <img src={logo} className="h-full" width={120} height={50} alt="logo" />
+    <nav className="bg-white w-full border-b md:border-0 md:static 2xl:mt-8 lg:mt-2 md:mt-2 sm:mt-0 xs:mt-0 transition-all ease-linear fixed top-0">
+      <div className="flex flex-row justify-center px-0 max-w-screen-xl min-w-screen-md mx-auto xs:h-16 2xl:h-28">
+        <Link to="/" className="z-20 ">
+          <img src={logo} className="h-full w-24" width={120} height={50} alt="logo" />
         </Link>
         <div className="flex self-center items-center justify-between py-3">
           <div className="2xl:hidden"></div>
@@ -97,7 +97,7 @@ function Navbar() {
           )}
         </div>
         <button
-          className="lg:hidden text-gray-700 outline-none pt-2 pl-2 ml-2 self-center rounded-md focus:border-gray-400 focus:border"
+          className="lg:hidden text-gray-700 outline-none pt-2 pl-2 ml-2 self-center rounded-md focus:border-gray-400 focus:border z-20"
           onClick={() => {
             setState(!state);
           }}
@@ -136,17 +136,34 @@ function Navbar() {
             </>
           )}
         </button>
+        {/* space-y-2 md:hidden rounded-lg ml-8 p-2 pr-8 xs:flex xs:space-x-6 xs:space-y-0	bg-blue-100 
+        xs:flex xs:items-center z-[-1] xs:z-auto xs:static absolute bg-white w-full left-0 xs:w-auto xs:py-0 py-4 xs:pl-0 pl-7 xs:opacity-100 xxs:opacity-0 top-[-400px] transition-all ease-in duration-500
+
+        transition-all fixed z-10 cursor-pointer	 space-y-2 xs:flex xs:space-x-6 xs:space-y-0 md:hidden transition-all fixed w-screen h-screen bg-gray-100 	text-center 
+        */}
       </div>
       {state ? (
-        <div className="text-end ">
-          <ul className="space-y-2 md:hidden rounded-lg ml-8 p-2 pr-8 xs:flex xs:space-x-6 xs:space-y-0	bg-blue-100">
+        <div className=" h-full w-full fixed z-10 top-0 transition-all bg-white pt-16 ease-linear ">
+          <ul className=" text-center pt-8">
             {navigation.map((item, idx) => {
               return (
-                <li key={idx} className="text-gray-600 hover:text-indigo-600">
-                  <a>{item.title}</a>
-                </li>
+                <>
+                  <li key={idx} className="text-gray-600 hover:text-indigo-600 text-2xl">
+                    <Link className="m-0 p-0 block transition-all" to="/">
+                      {item.title}
+                    </Link>
+                  </li>
+                </>
               );
             })}
+            <a
+              href="https://github.com/basedalex"
+              rel="noreferrer"
+              target="_blank"
+              className="m-0 p-2 block transition-all text-gray-600 hover:text-indigo-600 text-2xl"
+            >
+              Связаться
+            </a>
           </ul>
         </div>
       ) : (
