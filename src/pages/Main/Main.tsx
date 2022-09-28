@@ -38,7 +38,7 @@ function Main() {
             <div className="max-w-xs mx-auto ">
               <div className="bg-white shadow-md border border-gray-200 rounded-lg align-center mx-auto max-w-sm dark:bg-gray-800 dark:border-gray-700">
                 <a href="%">
-                  <img className="h-48 w-full rounded-t-lg" src={item.image} alt="" />
+                  <img className="h-48 w-full rounded-t-lg px-8 py-2" src={item.image} alt="" />
                 </a>
                 <div className="p-5 min-h-30">
                   <a href="%">
