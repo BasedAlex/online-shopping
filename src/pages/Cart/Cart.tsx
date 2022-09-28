@@ -41,7 +41,7 @@ function Cart() {
   };
 
   return (
-    <div className="py md:pt-0 2xl:py-8 xxs:pt-24 xxs:px-8 ">
+    <div className="py md:pt-0 2xl:py-8 xxs:pt-24 xxs:px ">
       <h2 className="font-normal text-3xl text-center">Корзина</h2>
       {cart.items.length === 0 ? (
         <div className="flex flex-col items-center font-normal text-xl mt-2">
@@ -69,12 +69,12 @@ function Cart() {
           </div>
         </div>
       ) : (
-        <div>
+        <div className="">
           <div className="grid mt-8 mx-0 mb-4 grid-cols-cart">
             <h3 className="font-normal text-3xs xl:text-sm md:text-xs uppercase pl-4">Продукт</h3>
             <h3 className="font-normal text-3xs xl:text-sm md:text-xs uppercase">Цена</h3>
             <h3 className="font-normal text-3xs xl:text-sm md:text-xs uppercase">Количество</h3>
-            <h3 className="font-normal text-3xs xl:text-sm md:text-xs uppercase pr-4 ">
+            <h3 className="font-normal text-3xs xl:text-sm md:text-xs uppercase pr-4 xxs:pl-2">
               Конечная цена
             </h3>
           </div>
@@ -124,12 +124,12 @@ function Cart() {
             <Button btnStyle="btn-white ml-2" onClick={() => handleClearCart()}>
               Очистить
             </Button>
-            <div className="w-48 max-w-full">
-              <div className="flex justify-between text-xl">
+            <div className="w-48 max-w-full pl-4">
+              <div className="flex justify-between text-xl ">
                 <span>Итого:</span>
                 <span className="font-bold">{totalPrice.toFixed(2)}</span>
               </div>
-              <p className="text-sm font-extralight my-2 mt-0	">Конечная цена уже указана</p>
+              <p className="text-sm font-extralight my-2 mt-0 	">Конечная цена уже указана</p>
 
               {isAuth ? (
                 <button
