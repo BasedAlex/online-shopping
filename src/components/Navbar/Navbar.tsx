@@ -145,7 +145,7 @@ function Navbar() {
                 <>
                   <li key={idx} className="text-gray-600 hover:text-indigo-600 text-2xl">
                     <Link
-                      className="m-0 p-0 block transition-all"
+                      className="m-0 p-0 text-2xl block transition-all"
                       to="/"
                       onClick={() => {
                         setState(!state);

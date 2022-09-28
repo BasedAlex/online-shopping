@@ -97,14 +97,14 @@ function Cart() {
                   </div>
                 </div>
                 <div className="text-xxs xl:text-xl md:text-xs">{cartItem.price}</div>
-                <div className="flex justify-center md:w-28 sm:w-16 xs:w-14 xss:w-12 max-w-full border border-zinc-600 rounded-md ">
+                <div className="flex justify-center md:w-28 sm:w-16 xs:w-14 xss:w-8 max-w-full border border-zinc-600 rounded-md ">
                   <button
                     className="lg:pr-4 xs:pr-0 py-2 text-xxs xl:text-xl md:text-xs "
                     onClick={() => handleDecreaseCart(cartItem)}
                   >
                     -
                   </button>
-                  <div className="lg:pr-4 px-1 xs:pr-0 py-2 xs:m-2 text-xxs xl:text-xl md:text-xs xs:mx">
+                  <div className="lg:pr-4 px-1 xs:pr-0 py-2 xs:m-2 text-md xl:text-xl md:text-md xs:mx">
                     {cartItem.cartQuantity}
                   </div>
                   <button
