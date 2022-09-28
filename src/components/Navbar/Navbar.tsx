@@ -143,9 +143,9 @@ function Navbar() {
             {navigation.map((item, idx) => {
               return (
                 <>
-                  <li key={idx} className="text-gray-600 hover:text-indigo-600 text-2xl">
+                  <li key={idx} className="text-gray-600 hover:text-indigo-600 text-3xl">
                     <Link
-                      className="m-0 p-0 text-2xl block transition-all"
+                      className="m-0 p-0 text-3xl block transition-all"
                       to="/"
                       onClick={() => {
                         setState(!state);
