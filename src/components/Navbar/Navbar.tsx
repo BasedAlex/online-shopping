@@ -180,7 +180,7 @@ function Navbar() {
             ) : (
               <Link to="/login">
                 <Button
-                  btnStyle="btn-blue w-40 mt-8 text-center"
+                  btnStyle="btn-blue w-40 mt-8 pl-12 text-lg"
                   onClick={() => {
                     setState(!state);
                   }}

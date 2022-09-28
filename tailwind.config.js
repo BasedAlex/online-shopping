@@ -19,6 +19,9 @@ module.exports = {
       '7xl': '5rem',
     },
     extend: {
+      width: {
+        128: '32rem',
+      },
       gridColumn: {
         'span-1/3': '1 / span 3',
         'span-4/3': '4 / span 3',
