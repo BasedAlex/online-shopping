@@ -136,11 +136,6 @@ function Navbar() {
             </>
           )}
         </button>
-        {/* space-y-2 md:hidden rounded-lg ml-8 p-2 pr-8 xs:flex xs:space-x-6 xs:space-y-0	bg-blue-100 
-        xs:flex xs:items-center z-[-1] xs:z-auto xs:static absolute bg-white w-full left-0 xs:w-auto xs:py-0 py-4 xs:pl-0 pl-7 xs:opacity-100 xxs:opacity-0 top-[-400px] transition-all ease-in duration-500
-
-        transition-all fixed z-10 cursor-pointer	 space-y-2 xs:flex xs:space-x-6 xs:space-y-0 md:hidden transition-all fixed w-screen h-screen bg-gray-100 	text-center 
-        */}
       </div>
       {state ? (
         <div className=" h-full w-full fixed z-10 top-0 transition-all bg-white pt-16 ease-linear ">
@@ -149,7 +144,13 @@ function Navbar() {
               return (
                 <>
                   <li key={idx} className="text-gray-600 hover:text-indigo-600 text-2xl">
-                    <Link className="m-0 p-0 block transition-all" to="/">
+                    <Link
+                      className="m-0 p-0 block transition-all"
+                      to="/"
+                      onClick={() => {
+                        setState(!state);
+                      }}
+                    >
                       {item.title}
                     </Link>
                   </li>
@@ -161,6 +162,9 @@ function Navbar() {
               rel="noreferrer"
               target="_blank"
               className="m-0 p-2 block transition-all text-gray-600 hover:text-indigo-600 text-2xl"
+              onClick={() => {
+                setState(!state);
+              }}
             >
               Связаться
             </a>

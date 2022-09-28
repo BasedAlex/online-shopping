@@ -41,7 +41,7 @@ function Cart() {
     dispatch(clearCartAction());
   };
 
-  return isAuth ? (
+  return (
     <div className="py md:pt-0 2xl:py-8 xxs:pt-24 xxs:px-8 ">
       <h2 className="font-normal text-3xl text-center">Корзина</h2>
       {cart.items.length === 0 ? (
@@ -177,8 +177,6 @@ function Cart() {
         </div>
       )}
     </div>
-  ) : (
-    <>{shouldRedirect && <Navigate to="/login" />}</>
   );
 }
 

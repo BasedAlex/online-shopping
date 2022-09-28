@@ -17,14 +17,14 @@ const Form: FC<FormProps> = ({ title, handleClick }) => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
-          className="border-2 border-sky-800 2xl:w-60	rounded p-2 m-4 xxs:w-48"
+          className="border-2 border-sky-800 2xl:w-60	rounded p-2 m-4 xxs:w-80 xs:w-48"
         />
         <input
           type="password"
           value={pass}
           onChange={(e) => setPass(e.target.value)}
           placeholder="Пароль"
-          className="border-2 2xl:w-60 border-sky-800	rounded p-2 m-4 xxs:w-48"
+          className="border-2 2xl:w-60 border-sky-800	rounded p-2 m-4 xxs:w-80 xs:w-52"
         />
         <button
           onClick={() => handleClick(email, pass)}
