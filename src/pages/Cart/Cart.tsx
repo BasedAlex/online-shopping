@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ItemsType } from 'store/reducers/cart/cart-reducer';
 import { RootState } from 'store/store';
 import {
@@ -15,7 +15,6 @@ import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
 
 function Cart() {
   const { isAuth } = useAuth();
-  const shouldRedirect = true;
 
   const cart = useAppSelector((state: RootState) => state.cart);
 

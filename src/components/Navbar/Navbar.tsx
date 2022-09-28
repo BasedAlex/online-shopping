@@ -168,6 +168,27 @@ function Navbar() {
             >
               Связаться
             </a>
+            {isAuth ? (
+              <button
+                className="btn-blue w-40 mt-8"
+                onClick={() => {
+                  dispatch(removeUser()), setState(!state);
+                }}
+              >
+                Выйти
+              </button>
+            ) : (
+              <Link to="/login">
+                <Button
+                  btnStyle="btn-blue w-40 mt-8 text-center"
+                  onClick={() => {
+                    setState(!state);
+                  }}
+                >
+                  Войти
+                </Button>
+              </Link>
+            )}
           </ul>
         </div>
       ) : (
