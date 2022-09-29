@@ -42,15 +42,16 @@ module.exports = {
       },
     },
     screens: {
-      xxs: '320px',
+      test: '100px',
+      xxs: '400px',
       xs: '640px',
-      sm: '768px',
+      sm: '860px',
       // => @media (min-width: 768px) { ... }
 
-      md: '960px',
+      md: '1040px',
       // => @media (min-width: 768px) { ... }
 
-      lg: '1024px',
+      lg: '1240px',
       // => @media (min-width: 1024px) { ... }
 
       xl: '1440px',

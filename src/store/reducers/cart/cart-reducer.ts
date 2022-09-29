@@ -40,6 +40,7 @@ export const cartReducer = createReducer(initialState, (builder) => {
     })
     .addCase(removeFromCartAction, (state, action: PayloadAction<ItemsType>) => {
       const nextCartItems = state.items.filter((cartItem) => cartItem.id !== action.payload.id);
+      state.cartTotalQuantity = state.cartTotalQuantity - action.payload.cartQuantity;
       state.items = nextCartItems;
     })
     .addCase(decreaseCartAction, (state, action: PayloadAction<ItemsType>) => {

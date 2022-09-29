@@ -23,18 +23,27 @@ function Navbar() {
     { title: 'Бренды', path: 'brands' },
   ];
 
+  // bg-white border-b md:border-0 md:static 2xl:mt-8 lg:mt-2 md:mt-2 sm:mt-0 xs:mt-0 fixed top-0 test:mx-auto 2xl:mx-[440px] mx-auto
+
+  // flex flex-row justify-center px-0 max-w-screen-xl min-w-screen-md mx-auto xs:h-16 2xl:h-28
+
   return (
-    <nav className="bg-white w-full border-b md:border-0 md:static 2xl:mt-8 lg:mt-2 md:mt-2 sm:mt-0 xs:mt-0 transition-all ease-linear fixed top-0">
-      <div className="flex flex-row justify-center px-0 max-w-screen-xl min-w-screen-md mx-auto xs:h-16 2xl:h-28">
+    <nav className="bg-white w-full border-b md:border-0 md:static mt-8 ">
+      <div className="flex flex-row justify-center 2xl:px-4 max-w-screen-xl min-w-screen-md mx-auto xxs:px-8 lg:px-40 md:px-20">
         <Link to="/" className="z-20 ">
-          <img src={logo} className="h-full w-24" width={120} height={50} alt="logo" />
+          <img
+            src={logo}
+            className="2xl:h-full 2xl:w-24 test:w-20 test:h-20"
+            width={120}
+            height={50}
+            alt="logo"
+          />
         </Link>
-        <div className="flex self-center items-center justify-between py-3">
-          <div className="2xl:hidden"></div>
-          <ul className="hidden lg:flex justify-center items-center space-y-8  xs:space-x-6 xs:space-y-0">
+        <div className="flex mx-auto self-center items-center justify-between py-3">
+          <ul className="hidden sm:flex justify-center items-center space-y-8 xs:space-x-6 xs:space-y-0">
             {navigation.map((item, idx) => {
               return (
-                <li key={idx} className="text-gray-600 hover:text-indigo-600">
+                <li key={idx} className="text-gray-600 hover:text-indigo-600 text-md lg:text-md">
                   <a>{item.title}</a>
                 </li>
               );
@@ -62,7 +71,7 @@ function Navbar() {
             </div>
           </div>
           <Link to="/cart">
-            <div className="flex flex-row	grow-0 shrink pt-1 pr-10 fill-gray-600 hover:fill-indigo-600 text-gray-600 hover:text-indigo-600 ml-8">
+            <div className="flex flex-row	grow-0 shrink 2xl:pt-1 2xl:pr-10 xl:pt-1 xl:pr-10 lg:pt-1 lg:pr-10 sm:pt-1 sm:pr-10  test:ml-0 test:pr-3 test:pt-2 fill-gray-600 hover:fill-indigo-600 text-gray-600 hover:text-indigo-600 ml-8">
               <div className="xs:ml-6 ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +106,7 @@ function Navbar() {
           )}
         </div>
         <button
-          className="lg:hidden text-gray-700 outline-none pt-2 pl-2 ml-2 self-center rounded-md focus:border-gray-400 focus:border z-20"
+          className="sm:hidden text-gray-700 outline-none pt-2 pl-2 ml-2 self-center rounded-md focus:border-gray-400 focus:border z-20"
           onClick={() => {
             setState(!state);
           }}
@@ -139,7 +148,7 @@ function Navbar() {
       </div>
       {state ? (
         <div className=" h-full w-full fixed z-10 top-0 transition-all bg-white pt-16 ease-linear ">
-          <ul className=" text-center pt-8">
+          <ul className="text-center pt-8">
             {navigation.map((item, idx) => {
               return (
                 <>

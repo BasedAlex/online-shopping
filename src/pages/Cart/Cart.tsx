@@ -41,7 +41,7 @@ function Cart() {
   };
 
   return (
-    <div className="py md:pt-0 2xl:py-8 xxs:pt-24 xxs:px ">
+    <div className="py md:pt-0 2xl:py-8 xxs:pt-4 xxs:px ">
       <h2 className="font-normal text-3xl text-center">Корзина</h2>
       {cart.items.length === 0 ? (
         <div className="flex flex-col items-center font-normal text-xl mt-2">
@@ -69,7 +69,7 @@ function Cart() {
           </div>
         </div>
       ) : (
-        <div className="">
+        <div className="2xl:mx-28 xxs:mx-4">
           <div className="grid mt-8 mx-0 mb-4 grid-cols-cart">
             <h3 className="font-normal text-3xs xl:text-sm md:text-xs uppercase pl-4">Продукт</h3>
             <h3 className="font-normal text-3xs xl:text-sm md:text-xs uppercase">Цена</h3>
@@ -87,7 +87,7 @@ function Cart() {
                 <div className="flex my-4 ">
                   <img className="rounded-t-lg w-24 max-w-fullmr-4" src={cartItem.image} alt="" />
                   <div className="ml-2">
-                    <h3 className="font-normal">{cartItem.title}</h3>
+                    <h3 className="font-normal test:text-xs xs:text-xl">{cartItem.title}</h3>
                     <button
                       className="mt-3 text-zinc-700 hover:text-black"
                       onClick={() => handleRemoveFromCart(cartItem)}
@@ -99,16 +99,16 @@ function Cart() {
                 <div className="text-xxs xl:text-xl md:text-xs">{cartItem.price}</div>
                 <div className="flex justify-center md:w-28 sm:w-16 xs:w-14 xss:w-8 max-w-full border border-zinc-600 rounded-md ">
                   <button
-                    className="lg:pr-4 xs:pr-0 py-2 text-xxs xl:text-xl md:text-xs "
+                    className="lg:pr-4 pl-8 xs:pr-0 py-2 text-xl xl:text-2xl md:text-sm test:pl-2"
                     onClick={() => handleDecreaseCart(cartItem)}
                   >
                     -
                   </button>
-                  <div className="lg:pr-4 px-1 xs:pr-0 py-2 xs:m-2 text-md xl:text-xl md:text-md xs:mx">
+                  <div className="lg:pr-0 px-1 xs:pr-0 test:pt-2 xs:pt-0 xs:m-2 text-xl xl:text-xl md:text-md sm:pt-1">
                     {cartItem.cartQuantity}
                   </div>
                   <button
-                    className="lg:pl-4 xs:pl-0 py-2 text-xxs xl:text-xl md:text-xs "
+                    className="lg:pl-4 mr-8 xs:pl-0 py-2 text-xl xl:text-xl md:text-xs test:mr-2"
                     onClick={() => handleIncreaseCart(cartItem)}
                   >
                     +
@@ -120,16 +120,16 @@ function Cart() {
               </div>
             ))}
           </div>
-          <div className="flex justify-between items-start border-t border-zinc-600 pt-8 pr-16">
+          <div className="flex justify-between items-start border-t border-zinc-600 pt-8 pr-16 2xl:pr-20 xl:pr-28 test:pr-2 md:pr-8 sm:pr-4">
             <Button btnStyle="btn-white ml-2" onClick={() => handleClearCart()}>
               Очистить
             </Button>
             <div className="w-48 max-w-full pl-4">
               <div className="flex justify-between text-xl ">
-                <span>Итого:</span>
-                <span className="font-bold">{totalPrice.toFixed(2)}</span>
+                <span>Итого: </span>
+                <span className="font-bold">${totalPrice.toFixed(2)}</span>
               </div>
-              <p className="text-sm font-extralight my-2 mt-0 	">Конечная цена уже указана</p>
+              <p className="text-sm font-extralight my-2 mt-0 ">Конечная цена уже указана</p>
 
               {isAuth ? (
                 <button
