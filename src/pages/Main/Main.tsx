@@ -32,7 +32,7 @@ function Main() {
 
   return (
     <>
-      <div className="2xl:px-8 xl:mx-40 sm:mx-20 md:mx xs:p-16 xs:m-0 2xl:griden-2xl xl:griden-xl lg:griden-lg md:griden-md sm:griden-sm xxs:pt-24 md:pt-2 xs:pt-20">
+      <div className="2xl:px-8 xl:mx-40 sm:mx-20 md:mx xs:p-4 xs:m-0 2xl:griden-2xl xl:griden-xl lg:griden-lg md:griden-md sm:griden-sm xxs:pt-8 2xl:pt-6 md:pt-2 xs:pt-8">
         {data!.data?.slice(0, visible).map((item: ItemsType) => (
           <div key={item.id} className="mt-5 mx-10">
             <div className="max-w-xs mx-auto ">

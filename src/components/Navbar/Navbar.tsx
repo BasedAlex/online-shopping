@@ -29,7 +29,7 @@ function Navbar() {
 
   return (
     <nav className="bg-white w-full border-b md:border-0 md:static mt-8 ">
-      <div className="flex flex-row justify-center 2xl:px-4 max-w-screen-xl min-w-screen-md mx-auto xxs:px-8 lg:px-40 md:px-20">
+      <div className="flex flex-row justify-center max-w-screen-xl min-w-screen-md mx-auto test:px-4 xxs:px-8 lg:px-40 md:px-20 2xl:px-20">
         <Link to="/" className="z-20 ">
           <img
             src={logo}
@@ -40,7 +40,7 @@ function Navbar() {
           />
         </Link>
         <div className="flex mx-auto self-center items-center justify-between py-3">
-          <ul className="hidden sm:flex justify-center items-center space-y-8 xs:space-x-6 xs:space-y-0">
+          <ul className="hidden sm:flex 2xl:text-xl justify-center items-center space-y-8 xs:space-x-6 xs:space-y-0">
             {navigation.map((item, idx) => {
               return (
                 <li key={idx} className="text-gray-600 hover:text-indigo-600 text-md lg:text-md">
@@ -106,7 +106,7 @@ function Navbar() {
           )}
         </div>
         <button
-          className="sm:hidden text-gray-700 outline-none pt-2 pl-2 ml-2 self-center rounded-md focus:border-gray-400 focus:border z-20"
+          className="sm:hidden text-gray-700 outline-none pt-2 pl-2 xss:mx-0 self-center rounded-md focus:border-gray-400 focus:border z-20"
           onClick={() => {
             setState(!state);
           }}
@@ -147,7 +147,7 @@ function Navbar() {
         </button>
       </div>
       {state ? (
-        <div className=" h-full w-full fixed z-10 top-0 transition-all bg-white pt-16 ease-linear ">
+        <div className=" h-full w-full fixed z-10 top-0 transition-all bg-white pt-16 ease-linear mr-2">
           <ul className="text-center pt-8">
             {navigation.map((item, idx) => {
               return (

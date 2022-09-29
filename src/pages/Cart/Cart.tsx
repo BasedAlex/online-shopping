@@ -41,7 +41,7 @@ function Cart() {
   };
 
   return (
-    <div className="py md:pt-0 2xl:py-8 xxs:pt-4 xxs:px ">
+    <div className="py test:mx-2 md:pt-0 2xl:py-8 xxs:pt-4 xxs:px ">
       <h2 className="font-normal text-3xl text-center">Корзина</h2>
       {cart.items.length === 0 ? (
         <div className="flex flex-col items-center font-normal text-xl mt-2">
