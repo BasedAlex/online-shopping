@@ -32,13 +32,13 @@ function Main() {
 
   return (
     <>
-      <div className="2xl:px-8 xl:mx-40 sm:mx-20 md:mx xs:p-0 xs:m-0 2xl:griden-2xl xl:griden-xl lg:griden-lg md:griden-md sm:griden-sm">
+      <div className="2xl:px-8 xl:mx-40 sm:mx-20 md:mx xs:p-4 xs:m-0 2xl:griden-2xl xl:griden-xl lg:griden-lg md:griden-md sm:griden-sm xxs:pt-8 2xl:pt-6 md:pt-2 xs:pt-8">
         {data!.data?.slice(0, visible).map((item: ItemsType) => (
           <div key={item.id} className="mt-5 mx-10">
             <div className="max-w-xs mx-auto ">
               <div className="bg-white shadow-md border border-gray-200 rounded-lg align-center mx-auto max-w-sm dark:bg-gray-800 dark:border-gray-700">
                 <a href="%">
-                  <img className="h-48 w-full rounded-t-lg" src={item.image} alt="" />
+                  <img className="h-48 w-full rounded-t-lg px-8 py-2" src={item.image} alt="" />
                 </a>
                 <div className="p-5 min-h-30">
                   <a href="%">

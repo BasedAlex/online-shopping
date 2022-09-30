@@ -19,6 +19,16 @@ module.exports = {
       '7xl': '5rem',
     },
     extend: {
+      width: {
+        100: '25rem',
+        104: '26rem',
+        108: '27rem',
+        112: '28rem',
+        116: '29rem',
+        120: '30rem',
+        124: '31rem',
+        128: '32rem',
+      },
       gridColumn: {
         'span-1/3': '1 / span 3',
         'span-4/3': '4 / span 3',
@@ -32,15 +42,16 @@ module.exports = {
       },
     },
     screens: {
-      xxs: '320px',
+      test: '100px',
+      xxs: '400px',
       xs: '640px',
-      sm: '768px',
+      sm: '860px',
       // => @media (min-width: 768px) { ... }
 
-      md: '960px',
+      md: '1040px',
       // => @media (min-width: 768px) { ... }
 
-      lg: '1024px',
+      lg: '1240px',
       // => @media (min-width: 1024px) { ... }
 
       xl: '1440px',
