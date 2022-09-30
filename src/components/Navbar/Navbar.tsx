@@ -72,7 +72,7 @@ function Navbar() {
           </div>
           <Link to="/cart">
             <div className="flex flex-row	grow-0 shrink 2xl:pt-1 2xl:pr-10 xl:pt-1 xl:pr-10 lg:pt-1 lg:pr-10 sm:pt-1 sm:pr-10  test:ml-0 test:pr-3 test:pt-2 fill-gray-600 hover:fill-indigo-600 text-gray-600 hover:text-indigo-600 ml-8">
-              <div className="xs:ml-6 ">
+              <div className="xs:ml-6">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
