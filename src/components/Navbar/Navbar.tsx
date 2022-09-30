@@ -106,7 +106,7 @@ function Navbar() {
           )}
         </div>
         <button
-          className="sm:hidden text-gray-700 outline-none pt-2 pl-2 xss:mx-0 self-center rounded-md focus:border-gray-400 focus:border z-20"
+          className="sm:hidden text-gray-700 outline-none pt-2 pl-2 xss:mx-0 ml-2 self-center rounded-md focus:border-gray-400 focus:border z-20"
           onClick={() => {
             setState(!state);
           }}
@@ -147,7 +147,7 @@ function Navbar() {
         </button>
       </div>
       {state ? (
-        <div className=" h-full w-full fixed z-10 top-0 transition-all bg-white pt-16 ease-linear mr-2">
+        <div className="h-full w-full fixed z-10 top-0 transition-all bg-white pt-16 ease-linear mr-2 ">
           <ul className="text-center pt-8">
             {navigation.map((item, idx) => {
               return (
